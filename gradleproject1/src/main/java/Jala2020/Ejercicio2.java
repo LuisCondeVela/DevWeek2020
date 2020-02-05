@@ -22,12 +22,18 @@ public class Ejercicio2 {
         int resultado = 0;
         Ejercicio1 ej1Arr = new Ejercicio1();
         ArrayList<Integer> arregloDigi = new ArrayList<Integer>();
-        arregloDigi=ej1Arr.toArrayList(n);
+        arregloDigi=ej1Arr.numToArray(n);
         Collections.reverse(arregloDigi);
-        for(int i=0;i<arregloDigi.size();i++){
-            resultado+=(Math.pow(10, i)*arregloDigi.get(i));
-        }
-        return resultado;        
+        return ArregloANumero(arregloDigi);        
+    }
+    
+    //Convierte un arreglo a un numero entero manteniedo posiciones
+    public int ArregloANumero(ArrayList<Integer> arreglo){
+        int resultado = 0;
+        for(int i=0;i<arreglo.size();i++){
+            resultado+=(Math.pow(10, i)*arreglo.get(i));
+        }       
+        return resultado;
     }
     
 }
