@@ -17,11 +17,11 @@ public class Ejercicio1 {
     }
     
     //Convierte un numero entero en un arreglo mateniedo posiciones
-    public ArrayList<Integer> toArrayList(int n){
+    public ArrayList<Integer> numToArray(int n){
         ArrayList<Integer> result = new ArrayList<Integer>();
         if(n>10){
             result.add(n%10);
-            result.addAll(toArrayList(n/10));
+            result.addAll(numToArray(n/10));
         }            
         else
             result.add(n);        
@@ -31,7 +31,7 @@ public class Ejercicio1 {
     //Descompone un arreglo de numeros enteros segun sus posiciones
     public void DescomposcicionNumero(int n){
         if(n>0){
-            ArrayList<Integer> arreglo = toArrayList(n);
+            ArrayList<Integer> arreglo = numToArray(n);
             for(int i=0;i<arreglo.size();i++){
                 System.out.println(Math.pow(10,i)+" : "+arreglo.get(i));
             }
