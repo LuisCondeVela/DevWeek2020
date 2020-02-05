@@ -68,4 +68,9 @@ public class Ejercicio2Test {
         fail("The test case is a prototype.");
     }
     
+    @Test public void testEjercicio2(){
+        Ejercicio2 dos = new Ejercicio2();
+        System.out.println("123 invertido es :"+dos.NumeroInvertido(123));
+    }
+    
 }
