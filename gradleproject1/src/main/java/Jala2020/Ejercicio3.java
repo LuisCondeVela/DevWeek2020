@@ -15,6 +15,7 @@ public class Ejercicio3 {
         
     }
     
+    //Devuelve el valor de un numero entero positivo en texto binario
     public String ConvertirBinario(int n){
         return Integer.toBinaryString(n);
     }
