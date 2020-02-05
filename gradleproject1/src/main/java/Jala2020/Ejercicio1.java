@@ -16,6 +16,7 @@ public class Ejercicio1 {
     public Ejercicio1(){
     }
     
+    //Convierte un numero entero en un arreglo mateniedo posiciones
     public ArrayList<Integer> toArrayList(int n){
         ArrayList<Integer> result = new ArrayList<Integer>();
         if(n>10){
@@ -27,6 +28,7 @@ public class Ejercicio1 {
         return result;
     }
     
+    //Descompone un arreglo de numeros enteros segun sus posiciones
     public void DescomposcicionNumero(int n){
         if(n>0){
             ArrayList<Integer> arreglo = toArrayList(n);
@@ -36,9 +38,5 @@ public class Ejercicio1 {
         }
     }
     
-    /*public static void main(String[] args){
-        System.out.println("temp");
-        Ejercicio1 uno = new Ejercicio1();
-        uno.DescomposcicionNumero(123); 
-    }*/
+    
 }
