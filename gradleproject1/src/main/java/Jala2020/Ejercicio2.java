@@ -17,6 +17,7 @@ public class Ejercicio2 {
     public Ejercicio2(){        
     }
     
+    //Invierte un numero entero positivo
     public int NumeroInvertido(int n){
         int resultado = 0;
         Ejercicio1 ej1Arr = new Ejercicio1();
