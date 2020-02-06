@@ -89,6 +89,7 @@ public class EJ1_Ecuacion {
         return res+"="+total;
     }
     
+    //Obtiene el valor total
     private int getValor(List<Character> car){
         String res = "";
         for(char c:car){
