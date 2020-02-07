@@ -55,6 +55,32 @@ public class Tablero {
         return res;
     }
     
+    public void Mover(String Direccion){
+        Pieza[] movimientos = ObtenerVecinos(PosActual);
+        switch(Direccion){
+            case "Arriba":
+                if(movimientos[0]!=null){
+                    Intercambiar(movimientos[0], PosActual);
+                }
+                break;
+            case "Izquierda":
+                if(movimientos[1]!=null){
+                    Intercambiar(movimientos[1], PosActual);
+                }                
+                break;
+            case "Derecha":
+                if(movimientos[2]!=null){
+                    Intercambiar(movimientos[2], PosActual);
+                }                
+                break;
+            case "Abajo":
+                if(movimientos[3]!=null){
+                    Intercambiar(movimientos[3], PosActual);
+                }                
+                break;
+        }        
+    }
+    
     //METODOS PRIVADOS
     
     private void ArmarTablero(){
@@ -72,21 +98,24 @@ public class Tablero {
         tablero[p.GetX()][p.GetY()]=p;
     }
     
-    private Pieza Obtener(Pieza p){
-        return p;
-    }
+    private void Intercambiar(Pieza destino, Pieza origen){
+        origen.setValor(destino.GetValor());
+        destino.setValor(0);
+        Poner(destino);
+        Poner(origen);
+        PosActual=destino;
+    } 
     
     private Pieza[] ObtenerVecinos(Pieza actual){
-        //ArrayList<Pieza> movimientos = new ArrayList<Pieza>();
         Pieza[] movimientos = new Pieza[4];        
         if(EsPosicionValida(actual.GetX()-1, actual.GetY()))
-            movimientos[0]=tablero[actual.GetX()-1][actual.GetY()];        
+            movimientos[0]=tablero[actual.GetX()-1][actual.GetY()];         //ARRIBA   
         if(EsPosicionValida(actual.GetX(), actual.GetY()-1))
-            movimientos[1]=tablero[actual.GetX()][actual.GetY()-1];        
+            movimientos[1]=tablero[actual.GetX()][actual.GetY()-1];        //IZQUIERA
         if(EsPosicionValida(actual.GetX(), actual.GetY()+1))
-            movimientos[2]=tablero[actual.GetX()][actual.GetY()+1];        
+            movimientos[2]=tablero[actual.GetX()][actual.GetY()+1];        //DERECHA
         if(EsPosicionValida(actual.GetX()+1, actual.GetY()))
-            movimientos[3]=tablero[actual.GetX()+1][actual.GetY()];        
+            movimientos[3]=tablero[actual.GetX()+1][actual.GetY()];        //ABAJO
         return movimientos;
     }
     

@@ -29,6 +29,10 @@ public class Pieza {
         return x+","+y;
     }
     
+    public void setValor(int v){
+        valor=v;
+    }
+    
     @Override
     public boolean equals(Object o){
         if(o==this)
