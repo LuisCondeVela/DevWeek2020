@@ -39,7 +39,6 @@ public class EJ1_Ecuacion {
                 numTemp+=""+tempChar;
             }else{
                 if(Character.isLetter(tempChar)){
-                    System.out.println("Entro "+numTemp+" con esta variable "+tempChar);
                     variables.add(new EJ1_Elemento(Integer.parseInt(numTemp),tempChar));
                     numTemp="";
                 }else{
@@ -83,7 +82,8 @@ public class EJ1_Ecuacion {
         int index=0;
         do{
             res+=variables.get(index).toString();
-            res+="+";
+            if(index!=variables.size()-1)
+                res+="+";
             index++;
         }while(index<variables.size());
         return res+"="+total;
