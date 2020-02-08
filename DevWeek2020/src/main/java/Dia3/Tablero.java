@@ -6,6 +6,9 @@
 package Dia3;
 
 //import java.util.ArrayList;
+
+import java.util.ArrayList;
+
 //import java.util.HashMap;
 
 /**
@@ -17,14 +20,15 @@ public class Tablero {
     //HashMap<Pieza,Integer> table = new HashMap<Pieza,Integer>();
     Pieza[][] tablero;
     int tamano;
-    Pieza PosActual;
+    Pieza posFicha;
+    ArrayList<String> historico = new ArrayList<String>();
     
     public Tablero(int n){
         if(EsCuadradoPerfecto(n)){
             tamano =(int) Math.sqrt(n);
             ArmarTablero();
-            PosActual=new Pieza(tamano-1,tamano-1,0);
-            Poner(PosActual);
+            //PosActual=new Pieza(tamano-1,tamano-1,0);
+            //Poner(posFicha);
         }        
     }
     
@@ -47,7 +51,7 @@ public class Tablero {
     
     public String PosiblesMovimientos(){
         String res = "";
-        Pieza[] movimientos = ObtenerVecinos(PosActual);
+        Pieza[] movimientos = ObtenerVecinos(posFicha);
         for(Pieza p:movimientos){
             if(p!=null)
                 res+=p.GetX()+","+p.GetY()+"\n";
@@ -56,29 +60,67 @@ public class Tablero {
     }
     
     public void Mover(String Direccion){
-        Pieza[] movimientos = ObtenerVecinos(PosActual);
+        Pieza[] movimientos = ObtenerVecinos(posFicha);
         switch(Direccion){
             case "Arriba":
                 if(movimientos[0]!=null){
-                    Intercambiar(movimientos[0], PosActual);
+                    Intercambiar(movimientos[0], posFicha);
+                    historico.add(Direccion);
                 }
                 break;
             case "Izquierda":
                 if(movimientos[1]!=null){
-                    Intercambiar(movimientos[1], PosActual);
+                    Intercambiar(movimientos[1], posFicha);
+                    historico.add(Direccion);
                 }                
                 break;
             case "Derecha":
                 if(movimientos[2]!=null){
-                    Intercambiar(movimientos[2], PosActual);
+                    Intercambiar(movimientos[2], posFicha);
+                    historico.add(Direccion);
                 }                
                 break;
             case "Abajo":
                 if(movimientos[3]!=null){
-                    Intercambiar(movimientos[3], PosActual);
+                    Intercambiar(movimientos[3], posFicha);
+                    historico.add(Direccion);
                 }                
                 break;
         }        
+    }
+    
+    public String[] MovidasAleatorias(int cantMov, Pieza posIni){
+        String[] movidas = new String[cantMov];
+        Poner(posIni);
+        Pieza[] vecinos = ObtenerVecinos(posFicha);
+        
+        for(int i=0;i<cantMov;i++){
+            Pieza temp;
+            int valorDir;
+            String direccion = "";
+            do{
+               valorDir = NumAleatorio(0, 3);
+               temp=vecinos[valorDir];
+               System.out.println("valor dir"+valorDir+":"+temp.toStringPos());
+            }while(temp==null);
+            switch(valorDir){
+                case 0:
+                    direccion="Arriba";
+                    break;
+                case 1:
+                    direccion="Izquierda";
+                    break;
+                case 2:
+                    direccion="Derecha";
+                    break;
+                case 3:
+                    direccion="Abajo";
+                    break;
+            }
+            movidas[i]=direccion;
+            vecinos = ObtenerVecinos(posFicha);
+        }
+        return movidas;
     }
     
     //METODOS PRIVADOS
@@ -96,6 +138,8 @@ public class Tablero {
           
     private void Poner(Pieza p){
         tablero[p.GetX()][p.GetY()]=p;
+        if(p.GetValor()==0)
+            posFicha=p;
     }
     
     private void Intercambiar(Pieza destino, Pieza origen){
@@ -103,7 +147,8 @@ public class Tablero {
         destino.setValor(0);
         Poner(destino);
         Poner(origen);
-        PosActual=destino;
+        if(destino.GetValor()==0)
+            posFicha=destino;
     } 
     
     private Pieza[] ObtenerVecinos(Pieza actual){
@@ -132,4 +177,8 @@ public class Tablero {
 	return ((sq - Math.floor(sq)) == 0); 
     }       
     
+    private int NumAleatorio(int min, int max){
+        int range = (max - min) + 1;     
+        return (int)(Math.random() * range) + min;
+    }     
 }

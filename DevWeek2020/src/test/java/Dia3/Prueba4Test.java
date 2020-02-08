@@ -10,26 +10,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Luis
+ * @author student
  */
-public class Prueba3Test {
+public class Prueba4Test {
     
-    public Prueba3Test() {
+    public Prueba4Test() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // @Test
-    // public void hello() {}
     @Test
-    public void testMovimientos() {
+    public void testMovimientosAleatorios() {
         Tablero est = new Tablero(16);
+        //System.out.println(est.toString());
+        String[] temp = est.MovidasAleatorias(5, new Pieza(1,1,0));
         System.out.println(est.toString());
-        //System.out.println(est.PosiblesMovimientos());   
-        est.Mover("Arriba");
-        System.out.println(est.toString());
-        System.out.println(est.posFicha.toString());
-        System.out.println(est.PosiblesMovimientos()); 
+        System.out.println("Movidas aleatorias");
+        for(String s:temp)
+            System.out.println(s);
+        
     }
 }
