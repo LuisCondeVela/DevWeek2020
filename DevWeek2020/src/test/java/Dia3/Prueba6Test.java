@@ -22,19 +22,23 @@ public class Prueba6Test {
     //
     @Test
     public void testMovimientosAleatoriosAplicados() {
-        Tablero est = new Tablero(16);
-        //System.out.println(est.toString());
-        String[] temp = est.MovidasAleatorias(10, new Pieza(1,1,0));
-        System.out.println(est.toString());
+        int numeroDeMovidas = 5;
+        Pieza piezaInicial = new Pieza(1,1,0);
+        
+        Tablero tablero = new Tablero(16);
+        
+        String[] temp = tablero.MovidasAleatorias(numeroDeMovidas,piezaInicial);
+        
+        System.out.println(tablero.toString());
         System.out.println("Movidas aleatorias");
         for(String s1:temp)
-            System.out.println(s1);
+            System.out.println(" "+s1);
         System.out.println("Movidas aplicadas");
         for(String s2:temp)
-            est.Mover(s2);
-        System.out.println(est.toString());
-        System.out.println("Historia de movidas");
-        for(String s3:est.historico)
-            System.out.println(s3);
+            tablero.Mover(s2);           
+        System.out.println(tablero.toString());
+        System.out.println("Historial de movidas");
+        for(String s3:tablero.historial)
+            System.out.println(" "+s3);
     }
 }

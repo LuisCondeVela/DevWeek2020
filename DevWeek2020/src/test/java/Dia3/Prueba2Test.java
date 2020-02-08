@@ -23,9 +23,11 @@ public class Prueba2Test {
      */
     @Test
     public void testPosiblesMovimientos() {
-        Tablero est = new Tablero(16);
-        System.out.println(est.toString());
-        System.out.println(est.PosiblesMovimientos());
+        Tablero tablero = new Tablero(16);
+        tablero.Poner(new Pieza(0,1,0));
+        System.out.println(tablero.toString());
+        System.out.println("Posibles movimientos:");
+        System.out.println(tablero.PosiblesMovimientos());
     }
     
 }

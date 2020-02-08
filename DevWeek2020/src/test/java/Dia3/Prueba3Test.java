@@ -24,12 +24,19 @@ public class Prueba3Test {
     // public void hello() {}
     @Test
     public void testMovimientos() {
-        Tablero est = new Tablero(16);
-        System.out.println(est.toString());
-        //System.out.println(est.PosiblesMovimientos());   
-        est.Mover("Arriba");
-        System.out.println(est.toString());
-        System.out.println(est.posFicha.toString());
-        System.out.println(est.PosiblesMovimientos()); 
+        Tablero tablero = new Tablero(16);
+        tablero.Poner(new Pieza(0,1,0));
+        System.out.println(tablero.toString()); 
+        System.out.println("De los posibles movimientos:");
+        String[] movimientos = tablero.PosiblesMovimientosLiterales();
+        for(String s:movimientos){
+            System.out.println(" "+s);
+        }
+        int x =(int) (Math.random()*(((movimientos.length-1)-0)+1))+0;
+        System.out.println("Se eligio: "+movimientos[x]);
+        tablero.Mover(movimientos[x]);
+        System.out.println("Quedando el tablero de la siguiente manera:");
+        System.out.println(tablero.toString());
+        
     }
 }

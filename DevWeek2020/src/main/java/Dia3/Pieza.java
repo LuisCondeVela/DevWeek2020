@@ -26,7 +26,7 @@ public class Pieza {
     }
     
     public String toStringPos(){
-        return x+","+y;
+        return "fila "+x+", columna "+y;
     }
     
     public void setValor(int v){

@@ -12,16 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Luis
  */
-public class Prueba1Test {
+public class DireccionTest {
     
-    public Prueba1Test() {
+    public DireccionTest() {
     }
 
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
     @Test
-    public void testToString() {
-        Tablero tablero = new Tablero(16);
-        tablero.Poner(new Pieza(3,3,0));
-        System.out.println(tablero.toString());
+    public void testHello() {
+        Direccion dir = Direccion.Abajo;
+        System.out.println(dir.Abajo);
+        //assertEquals(dir.Abajo, "Abajo");
     }
-    
 }

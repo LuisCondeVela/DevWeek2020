@@ -28,7 +28,7 @@ public class Prueba4Test {
         System.out.println(est.toString());
         System.out.println("Movidas aleatorias");
         for(String s:temp)
-            System.out.println(s);
+            System.out.println(" "+s);
         
     }
 }
