@@ -24,7 +24,7 @@ public class Prueba6Test {
     public void testMovimientosAleatoriosAplicados() {
         Tablero est = new Tablero(16);
         //System.out.println(est.toString());
-        String[] temp = est.MovidasAleatorias(5, new Pieza(1,1,0));
+        String[] temp = est.MovidasAleatorias(10, new Pieza(1,1,0));
         System.out.println(est.toString());
         System.out.println("Movidas aleatorias");
         for(String s1:temp)

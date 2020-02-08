@@ -93,16 +93,14 @@ public class Tablero {
         String[] movidas = new String[cantMov];
         Poner(posIni);
         Pieza[] vecinos = ObtenerVecinos(posFicha);
-        
         for(int i=0;i<cantMov;i++){
             Pieza temp;
             int valorDir;
             String direccion = "";
             do{
                valorDir = NumAleatorio(0, 3);
-               temp=vecinos[valorDir];
-               System.out.println("valor dir"+valorDir+":"+temp.toStringPos());
-            }while(temp==null);
+               temp=vecinos[valorDir];               
+            }while(temp==null);            
             switch(valorDir){
                 case 0:
                     direccion="Arriba";
@@ -118,7 +116,8 @@ public class Tablero {
                     break;
             }
             movidas[i]=direccion;
-            vecinos = ObtenerVecinos(posFicha);
+            vecinos = ObtenerVecinos(temp); 
+            //vecinos = ObtenerVecinos(posFicha);  
         }
         return movidas;
     }
